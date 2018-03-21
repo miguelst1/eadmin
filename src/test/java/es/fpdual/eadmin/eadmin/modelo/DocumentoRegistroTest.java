@@ -6,10 +6,10 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class Documento_RegistroTest {
+public class DocumentoRegistroTest {
 	
 	private static final Date FECHA = new Date();
-	private static Documento_Registro documentoRegistro = new Documento_Registro(1, "Factura", FECHA, true, EstadoDocumento.APROBADO,
+	private static DocumentoRegistro documentoRegistro = new DocumentoRegistro(1, "Factura", FECHA, true, EstadoDocumento.APROBADO,
 			"11111111A", "1");
 	
 	@Test
@@ -20,7 +20,7 @@ public class Documento_RegistroTest {
 	
 	@Test
 	public void deberiaDevolverTrueSiTienenElMismoToString() {
-		Documento_Registro documentoRegistro2 = new Documento_Registro(1, "Factura1", FECHA, false, EstadoDocumento.ELIMINADO, "12345678B", "1");
+		DocumentoRegistro documentoRegistro2 = new DocumentoRegistro(1, "Factura1", FECHA, false, EstadoDocumento.ELIMINADO, "12345678B", "1");
 		assertEquals(true, documentoRegistro.toString().equals(documentoRegistro2.toString()));
 	}
 }

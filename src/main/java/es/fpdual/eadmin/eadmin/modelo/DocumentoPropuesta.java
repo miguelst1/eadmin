@@ -2,13 +2,13 @@ package es.fpdual.eadmin.eadmin.modelo;
 
 import java.util.Date;
 
-public class Documento_Propuesta extends Documento{
+public class DocumentoPropuesta extends Documento{
 	
 	private Integer codigoPropuesta;
 	private Integer ejercicio;
 	private String grupoPolitico;
 	
-	public Documento_Propuesta(Integer codigo, String nombre, Date fechaCreacion, Boolean publico, EstadoDocumento estado,
+	public DocumentoPropuesta(Integer codigo, String nombre, Date fechaCreacion, Boolean publico, EstadoDocumento estado,
 			Integer codigoPropuesta, Integer ejercicio, String grupoPolitico) {
 		super(codigo, nombre, fechaCreacion, publico, estado);
 		this.codigoPropuesta = codigoPropuesta;

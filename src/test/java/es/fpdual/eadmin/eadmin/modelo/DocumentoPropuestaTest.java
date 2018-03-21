@@ -6,10 +6,10 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class Documento_PropuestaTest {
+public class DocumentoPropuestaTest {
 
 	private static final Date FECHA = new Date();
-	private static Documento_Propuesta documentoPropuesta = new Documento_Propuesta(1, "Factura1", FECHA, false, EstadoDocumento.ELIMINADO, 1, 2010, "PSOE");
+	private static DocumentoPropuesta documentoPropuesta = new DocumentoPropuesta(1, "Factura1", FECHA, false, EstadoDocumento.ELIMINADO, 1, 2010, "PSOE");
 	
 	@Test
 	public void deberiaComprobarGetters()  {
