@@ -4,6 +4,8 @@ import java.util.Date;
 
 import org.junit.Test;
 
+import static org.junit.Assert.*;
+
 public class Documento_PropuestaTest {
 
 	private static final Date FECHA = new Date();

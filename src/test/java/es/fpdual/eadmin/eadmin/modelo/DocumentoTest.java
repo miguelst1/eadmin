@@ -45,4 +45,10 @@ public class DocumentoTest {
 		Documento documento1 = new Documento(1, "Factura", FECHA, true, EstadoDocumento.APROBADO);
 		assertEquals(documento1.getCodigo().hashCode() , documento1.hashCode());
 	}
+	
+	@Test
+	public void deberiaDevolverTrueSiTienenElMismoToString() {
+		Documento documento1 = new Documento(1, "Factura", FECHA, true, EstadoDocumento.APROBADO);
+		assertEquals("Documento 1", documento1.toString());
+	}
 }
