@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 public class ModeloAdministracionElectronicaTest {
 	
 	private static final Date FECHA = new Date();
-	private static ModeloAdministracionElectronicaTestParaProbar modelo1 = new ModeloAdministracionElectronicaTestParaProbar(1, "MST", FECHA, true);
+	private static ModeloAdministracionElectronicaTestParaProbar modelo1 = new ModeloAdministracionElectronicaTestParaProbar(1, "MST", FECHA, true, new Date(1/1/2010));
 	
 	@Test
 	public void deberiaComprobarGetters() {
@@ -21,7 +21,7 @@ public class ModeloAdministracionElectronicaTest {
 	
 	@Test
 	public void deberiaDevolverTrueSiSonIguales() {
-		ModeloAdministracionElectronicaTestParaProbar modelo2 = new ModeloAdministracionElectronicaTestParaProbar(1, "MST", FECHA, true);
+		ModeloAdministracionElectronicaTestParaProbar modelo2 = new ModeloAdministracionElectronicaTestParaProbar(1, "MST", FECHA, true, new Date(1/1/2010));
 		assertEquals(true, modelo1.equals(modelo2));
 	}
 }
@@ -29,7 +29,7 @@ public class ModeloAdministracionElectronicaTest {
 class ModeloAdministracionElectronicaTestParaProbar extends ModeloAdministracionElectronica {
 
 	public ModeloAdministracionElectronicaTestParaProbar(Integer codigo, String nombre, Date fechaCreacion,
-			Boolean publico) {
-		super(codigo, nombre, fechaCreacion, publico);
+			Boolean publico, Date fechaUltimaModificacion) {
+		super(codigo, nombre, fechaCreacion, publico, fechaUltimaModificacion);
 	}
 }

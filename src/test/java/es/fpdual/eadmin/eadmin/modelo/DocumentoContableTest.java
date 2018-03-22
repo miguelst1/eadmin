@@ -10,7 +10,7 @@ public class DocumentoContableTest {
 	
 	private static final Date FECHA = new Date();
 	private static BigDecimal numero = new BigDecimal(1000);
-	private static DocumentoContable documentoContable = new DocumentoContable(1, "Factura", FECHA, true, EstadoDocumento.APROBADO, numero, "12345678A");
+	private static DocumentoContable documentoContable = new DocumentoContable(1, "Factura", FECHA, true, EstadoDocumento.APROBADO,  new Date(1/1/2010), numero, "12345678A");
 	
 	@Test
 	public void deberiaComprobarGetters() {
@@ -20,7 +20,7 @@ public class DocumentoContableTest {
 	
 	@Test
 	public void deberiaDevolverTrueSiTienenElMismoToString() {
-		DocumentoContable documentoContable2 = new DocumentoContable(1, "Factura1", FECHA, false, EstadoDocumento.ELIMINADO, numero, "12345678B");
+		DocumentoContable documentoContable2 = new DocumentoContable(1, "Factura1", FECHA, false, EstadoDocumento.ELIMINADO, new Date(1/1/2010), numero, "12345678B");
 		assertEquals(true, documentoContable.toString().equals(documentoContable2.toString()));
 	}
 }

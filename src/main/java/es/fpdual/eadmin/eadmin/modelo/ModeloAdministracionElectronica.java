@@ -8,13 +8,15 @@ public abstract class ModeloAdministracionElectronica {
 	private String nombre;
 	private Date fechaCreacion;
 	private Boolean publico;
+	private Date fechaUltimaModificacion;
 	
-	public ModeloAdministracionElectronica(Integer codigo, String nombre, Date fechaCreacion, Boolean publico) {
+	public ModeloAdministracionElectronica(Integer codigo, String nombre, Date fechaCreacion, Boolean publico, Date fechaUltimaModificacion) {
 		super();
 		this.codigo = codigo;
 		this.nombre = nombre;
 		this.fechaCreacion = fechaCreacion;
 		this.publico = publico;
+		this.fechaUltimaModificacion = fechaUltimaModificacion;
 	}
 
 	public Integer getCodigo() {
@@ -31,6 +33,10 @@ public abstract class ModeloAdministracionElectronica {
 	
 	public Boolean getPublico() {
 		return publico;
+	}
+	
+	public Date getFechaUltimaModificacion() {
+		return fechaUltimaModificacion;
 	}
 	
 	@Override

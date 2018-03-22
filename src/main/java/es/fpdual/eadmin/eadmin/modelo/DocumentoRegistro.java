@@ -8,8 +8,8 @@ public class DocumentoRegistro extends Documento{
 	private String codigoRegistro;
 		
 	public DocumentoRegistro(Integer codigo, String nombre, Date fechaCreacion, Boolean publico, EstadoDocumento estado,
-			String dniInteresado, String codigoRegistro) {
-		super(codigo, nombre, fechaCreacion, publico, estado);
+			Date fechaUltimaModificacion, String dniInteresado, String codigoRegistro) {
+		super(codigo, nombre, fechaCreacion, publico, estado, fechaUltimaModificacion);
 		this.dniInteresado = dniInteresado;
 		this.codigoRegistro = codigoRegistro;
 	}

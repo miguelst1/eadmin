@@ -10,7 +10,7 @@ public class DocumentoRegistroTest {
 	
 	private static final Date FECHA = new Date();
 	private static DocumentoRegistro documentoRegistro = new DocumentoRegistro(1, "Factura", FECHA, true, EstadoDocumento.APROBADO,
-			"11111111A", "1");
+			 new Date(1/1/2010), "11111111A", "1");
 	
 	@Test
 	public void deberiaComprobarGetters() {
@@ -20,7 +20,7 @@ public class DocumentoRegistroTest {
 	
 	@Test
 	public void deberiaDevolverTrueSiTienenElMismoToString() {
-		DocumentoRegistro documentoRegistro2 = new DocumentoRegistro(1, "Factura1", FECHA, false, EstadoDocumento.ELIMINADO, "12345678B", "1");
+		DocumentoRegistro documentoRegistro2 = new DocumentoRegistro(1, "Factura1", FECHA, false, EstadoDocumento.ELIMINADO, new Date(1/1/2010), "12345678B", "1");
 		assertEquals(true, documentoRegistro.toString().equals(documentoRegistro2.toString()));
 	}
 }

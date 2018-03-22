@@ -6,8 +6,8 @@ public class Documento extends ModeloAdministracionElectronica {
 
 	private EstadoDocumento estado;
 
-	public Documento(Integer codigo, String nombre, Date fechaCreacion, Boolean publico, EstadoDocumento estado) {
-		super(codigo, nombre, fechaCreacion, publico);
+	public Documento(Integer codigo, String nombre, Date fechaCreacion, Boolean publico, EstadoDocumento estado, Date fechaUltimaModificacion) {
+		super(codigo, nombre, fechaCreacion, publico, fechaUltimaModificacion);
 		this.estado = estado;
 	}
 

@@ -20,8 +20,8 @@ public class RepositorioDocumentoImplTest {
 	@Before
 	public void inicializarVariables() {
 		repositorioDocumento = new RepositorioDocumentoImpl();
-		documento1 = new Documento(1, "Factura", FECHA, true, EstadoDocumento.APROBADO);
-		documento2 = new Documento(2, "Factura", FECHA, true, EstadoDocumento.APROBADO);
+		documento1 = new Documento(1, "Factura", FECHA, true, EstadoDocumento.APROBADO, new Date(1/1/2010));
+		documento2 = new Documento(2, "Factura", FECHA, true, EstadoDocumento.APROBADO, new Date(1/1/2010));
 	}
 	
 	@Test

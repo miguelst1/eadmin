@@ -12,7 +12,7 @@ public class ExpedienteTest {
 	private static Date fechaCreacion = new Date();
 	private static Date fechaArchivado = new Date();
 	private static ArrayList<Documento> lista = new ArrayList<>();
-	private static Expediente expediente1 = new Expediente(1, "MST", fechaCreacion, fechaArchivado, false, EstadoExpediente.EN_TRAMITE, lista);
+	private static Expediente expediente1 = new Expediente(1, "MST", fechaCreacion, fechaArchivado, false, EstadoExpediente.EN_TRAMITE, new Date(1/1/2010), lista);
 	
 	@Test
 	public void deberiaComprobarGetters() {
@@ -27,7 +27,7 @@ public class ExpedienteTest {
 	
 	@Test
 	public void deberiaDevolverTrueSiTienenLosMismoAtributos() {
-		Expediente expediente2 = new Expediente(1, "MST", fechaCreacion, fechaArchivado, false, EstadoExpediente.EN_TRAMITE, lista);
+		Expediente expediente2 = new Expediente(1, "MST", fechaCreacion, fechaArchivado, false, EstadoExpediente.EN_TRAMITE, new Date(1/1/2010), lista);
 		assertEquals(true, expediente1.equals(expediente2));
 	}
 }
