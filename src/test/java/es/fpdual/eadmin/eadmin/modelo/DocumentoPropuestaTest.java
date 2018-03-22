@@ -13,6 +13,8 @@ public class DocumentoPropuestaTest {
 	
 	@Test
 	public void deberiaComprobarGetters()  {
-		
+		assertEquals(Integer.valueOf(1), documentoPropuesta.getCodigoPropuesta());
+		assertEquals(Integer.valueOf(2010), documentoPropuesta.getEjercicio());
+		assertEquals("PSOE", documentoPropuesta.getGrupoPolitico());
 	}
 }
