@@ -4,11 +4,11 @@ import java.util.Date;
 
 public abstract class ModeloAdministracionElectronica {
 	
-	private Integer codigo;
-	private String nombre;
-	private Date fechaCreacion;
-	private Boolean publico;
-	private Date fechaUltimaModificacion;
+	private final Integer codigo;
+	private final String nombre;
+	private final Date fechaCreacion;
+	private final Boolean publico;
+	private final Date fechaUltimaModificacion;
 	
 	public ModeloAdministracionElectronica(Integer codigo, String nombre, Date fechaCreacion, Boolean publico, Date fechaUltimaModificacion) {
 		super();

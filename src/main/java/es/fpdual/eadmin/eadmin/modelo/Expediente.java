@@ -5,9 +5,9 @@ import java.util.Date;
 
 public class Expediente extends ModeloAdministracionElectronica {
 
-	private Date fechaArchivado;
-	private EstadoExpediente estado;
-	private List<Documento> documentos;
+	private final Date fechaArchivado;
+	private final EstadoExpediente estado;
+	private final List<Documento> documentos;
 
 	public Expediente(Integer codigo, String nombre, Date fechaCreacion, Date fechaArchivado, Boolean publico,
 			EstadoExpediente estado, Date fechaUltimaModificacion, List<Documento> documentos) {
