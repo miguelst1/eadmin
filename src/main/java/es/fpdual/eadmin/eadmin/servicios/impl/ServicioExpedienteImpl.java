@@ -12,19 +12,19 @@ import es.fpdual.eadmin.eadmin.repositorio.impl.RepositorioExpedienteImpl;
 import es.fpdual.eadmin.eadmin.servicios.ServicioExpediente;
 
 @Service
-public class ServicioExpedienteImpl implements ServicioExpediente{
+public class ServicioExpedienteImpl implements ServicioExpediente {
 
 	private final RepositorioExpedienteImpl repositorioExpediente;
-	
+
 	@Autowired
 	public ServicioExpedienteImpl(RepositorioExpedienteImpl repositorioExpediente) {
 		this.repositorioExpediente = repositorioExpediente;
 	}
-	
+
 	@Override
 	public Expediente altaExpediente(Expediente expediente) {
 		final Expediente expedienteAlta = obtenerExpedienteConFechaAltaCorrecta(expediente);
-		
+
 		repositorioExpediente.altaExpediente(expedienteAlta);
 		return expedienteAlta;
 	}
@@ -32,7 +32,7 @@ public class ServicioExpedienteImpl implements ServicioExpediente{
 	@Override
 	public Expediente modificarExpediente(Expediente expediente) {
 		final Expediente expedienteModificar = obtenerExpedienteConFechaModificarCorrecta(expediente);
-		
+
 		repositorioExpediente.modificarExpediente(expedienteModificar);
 		return expedienteModificar;
 	}
@@ -44,34 +44,44 @@ public class ServicioExpedienteImpl implements ServicioExpediente{
 
 	@Override
 	public Expediente asociarDocumentoAlExpediente(Integer codigoExpediente, Documento documento) {
-		Optional<Expediente> expedienteEncontrado = repositorioExpediente.getExpedientes().stream().filter(d -> d.getCodigo().equals(codigoExpediente)).findFirst();
-		
+		Optional<Expediente> expedienteEncontrado = repositorioExpediente.getExpedientes().stream()
+				.filter(d -> d.getCodigo().equals(codigoExpediente)).findFirst();
+
 		if (expedienteEncontrado.isPresent()) {
-			expedienteEncontrado.get().getDocumentos().add(documento);
+			if (!expedienteEncontrado.get().getDocumentos().contains(documento)) {
+				expedienteEncontrado.get().getDocumentos().add(documento);
+			}
+			return expedienteEncontrado.get();
 		}
-		return expedienteEncontrado.get();
+		return null;
 	}
 
 	@Override
 	public Expediente desasociarDocumentoDelExpediente(Integer codigoExpediente, Integer codigoDocumento) {
-		Optional<Expediente> expedienteEncontrado = repositorioExpediente.getExpedientes().stream().filter(d -> d.getCodigo().equals(codigoExpediente)).findFirst();
+		Optional<Expediente> expedienteEncontrado = repositorioExpediente.getExpedientes().stream()
+				.filter(d -> d.getCodigo().equals(codigoExpediente)).findFirst();
+		Optional<Documento> documentoEncontrado = expedienteEncontrado.get().getDocumentos().stream()
+				.filter(d -> d.getCodigo().equals(codigoDocumento)).findFirst();
 
-		if (expedienteEncontrado.isPresent()) {
-			expedienteEncontrado.get().getDocumentos().remove(codigoDocumento);
+		if (expedienteEncontrado.isPresent() && documentoEncontrado.isPresent()) {
+			if (expedienteEncontrado.get().getDocumentos().contains(documentoEncontrado.get())) {
+				expedienteEncontrado.get().getDocumentos().remove((int) codigoDocumento);
+			}
+			return expedienteEncontrado.get();
 		}
-		return expedienteEncontrado.get();
+		return null;
 	}
-	
+
 	protected Date dameFechaActual() {
 		return new Date();
 	}
-	
+
 	public Expediente obtenerExpedienteConFechaAltaCorrecta(Expediente expediente) {
 		return new Expediente(expediente.getCodigo(), expediente.getNombre(), dameFechaActual(),
-				expediente.getFechaArchivado(), expediente.getPublico(), expediente.getEstado(),
-				dameFechaActual(), expediente.getDocumentos());
+				expediente.getFechaArchivado(), expediente.getPublico(), expediente.getEstado(), dameFechaActual(),
+				expediente.getDocumentos());
 	}
-	
+
 	public Expediente obtenerExpedienteConFechaModificarCorrecta(Expediente expediente) {
 		return new Expediente(expediente.getCodigo(), expediente.getNombre(), dameFechaActual(),
 				expediente.getFechaArchivado(), expediente.getPublico(), expediente.getEstado(),
