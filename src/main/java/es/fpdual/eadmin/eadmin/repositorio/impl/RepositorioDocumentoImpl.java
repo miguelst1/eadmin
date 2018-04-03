@@ -10,10 +10,10 @@ import es.fpdual.eadmin.eadmin.modelo.Documento;
 import es.fpdual.eadmin.eadmin.repositorio.RepositorioDocumento;
 
 @Repository
-public class RepositorioDocumentoImpl implements RepositorioDocumento{
+public class RepositorioDocumentoImpl implements RepositorioDocumento {
 
 	private final List<Documento> documentos = new ArrayList<>();
-	
+
 	public List<Documento> getDocumentos() {
 		return documentos;
 	}
@@ -24,6 +24,7 @@ public class RepositorioDocumentoImpl implements RepositorioDocumento{
 			throw new IllegalArgumentException("El documento ya existe");
 		}
 		documentos.add(documento);
+		System.out.println("El documento se ha insertado correctamente");
 	}
 
 	@Override
@@ -36,8 +37,9 @@ public class RepositorioDocumentoImpl implements RepositorioDocumento{
 
 	@Override
 	public void eliminarDocumento(Integer codigo) {
-		Optional<Documento> documentoEncontrado = documentos.stream().filter(d -> d.getCodigo().equals(codigo)).findFirst();
-		
+		Optional<Documento> documentoEncontrado = documentos.stream().filter(d -> d.getCodigo().equals(codigo))
+				.findFirst();
+
 		if (documentoEncontrado.isPresent()) {
 			documentos.remove(documentoEncontrado.get());
 		}
@@ -45,12 +47,13 @@ public class RepositorioDocumentoImpl implements RepositorioDocumento{
 
 	@Override
 	public Documento obtenerDocumentoPorCodigo(Integer codigo) {
-		Optional<Documento> documentoEncontrado = documentos.stream().filter(d -> d.getCodigo().equals(codigo)).findFirst();
-		
+		Optional<Documento> documentoEncontrado = documentos.stream().filter(d -> d.getCodigo().equals(codigo))
+				.findFirst();
+
 		if (documentoEncontrado.isPresent()) {
 			return documentoEncontrado.get();
 		}
-		
+
 		return null;
 	}
 

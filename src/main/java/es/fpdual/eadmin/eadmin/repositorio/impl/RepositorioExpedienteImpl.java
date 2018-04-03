@@ -11,9 +11,9 @@ import es.fpdual.eadmin.eadmin.repositorio.RepositorioExpediente;
 
 @Repository
 public class RepositorioExpedienteImpl implements RepositorioExpediente {
-	
+
 	private final List<Expediente> expedientes = new ArrayList<>();
-	
+
 	public List<Expediente> getExpedientes() {
 		return expedientes;
 	}
@@ -24,6 +24,7 @@ public class RepositorioExpedienteImpl implements RepositorioExpediente {
 			throw new IllegalArgumentException("El expediente ya existe");
 		}
 		expedientes.add(expediente);
+		System.out.println("El expediente se ha insertado correctamente");
 	}
 
 	@Override
@@ -36,8 +37,9 @@ public class RepositorioExpedienteImpl implements RepositorioExpediente {
 
 	@Override
 	public void eliminarExpediente(Integer codigo) {
-		Optional<Expediente> expedienteEncontrado = expedientes.stream().filter(d -> d.getCodigo().equals(codigo)).findFirst();
-		
+		Optional<Expediente> expedienteEncontrado = expedientes.stream().filter(d -> d.getCodigo().equals(codigo))
+				.findFirst();
+
 		if (expedienteEncontrado.isPresent()) {
 			expedientes.remove(expedienteEncontrado.get());
 		}
@@ -45,12 +47,13 @@ public class RepositorioExpedienteImpl implements RepositorioExpediente {
 
 	@Override
 	public Expediente obtenerExpedientePorCodigo(Integer codigo) {
-		Optional<Expediente> expedienteEncontrado = expedientes.stream().filter(d -> d.getCodigo().equals(codigo)).findFirst();
-		
+		Optional<Expediente> expedienteEncontrado = expedientes.stream().filter(d -> d.getCodigo().equals(codigo))
+				.findFirst();
+
 		if (expedienteEncontrado.isPresent()) {
 			return expedienteEncontrado.get();
 		}
-		
+
 		return null;
 	}
 
