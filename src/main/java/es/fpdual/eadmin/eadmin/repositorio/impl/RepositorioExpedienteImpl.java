@@ -43,4 +43,20 @@ public class RepositorioExpedienteImpl implements RepositorioExpediente {
 		}
 	}
 
+	@Override
+	public Expediente obtenerExpedientePorCodigo(Integer codigo) {
+		Optional<Expediente> expedienteEncontrado = expedientes.stream().filter(d -> d.getCodigo().equals(codigo)).findFirst();
+		
+		if (expedienteEncontrado.isPresent()) {
+			return expedienteEncontrado.get();
+		}
+		
+		return null;
+	}
+
+	@Override
+	public List<Expediente> obtenerTodosLosExpedientes() {
+		return getExpedientes();
+	}
+
 }

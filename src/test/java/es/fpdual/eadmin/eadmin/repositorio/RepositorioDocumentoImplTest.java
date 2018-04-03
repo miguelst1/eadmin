@@ -45,9 +45,25 @@ public class RepositorioDocumentoImplTest {
 		assertEquals(0, repositorioDocumento.getDocumentos().indexOf(documento1));
 	}
 	
-	@Test(expected = NullPointerException.class)
+	@Test
 	public void deberiaDevolverFalseSiSeIntentaEliminarElDocumentoQueNoExiste() {
 		repositorioDocumento.eliminarDocumento(documento2.getCodigo());
 		assertEquals(true, repositorioDocumento.getDocumentos().isEmpty());
+	}
+	
+	@Test
+	public void deberiaDevolverTrueSiSeDevuelveLaLista() {
+		assertTrue(repositorioDocumento.obtenerTodosLosDocumentos().equals(repositorioDocumento.getDocumentos()));
+	}
+	
+	@Test
+	public void deberiaDevolverTrueSiExisteElDocumento() {
+		repositorioDocumento.getDocumentos().add(documento1);
+		assertTrue(repositorioDocumento.obtenerDocumentoPorCodigo(documento1.getCodigo()).equals(documento1));
+	}
+	
+	@Test(expected = NullPointerException.class)
+	public void deberiaDevolverFalseSiNoExisteElDocumento() {
+		assertFalse(repositorioDocumento.obtenerDocumentoPorCodigo(documento1.getCodigo()).equals(documento1));
 	}
 }

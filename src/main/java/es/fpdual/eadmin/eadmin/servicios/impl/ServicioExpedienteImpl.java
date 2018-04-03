@@ -1,6 +1,7 @@
 package es.fpdual.eadmin.eadmin.servicios.impl;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,6 +73,16 @@ public class ServicioExpedienteImpl implements ServicioExpediente {
 		return null;
 	}
 
+	@Override
+	public Expediente obtenerExpedientePorCodigo(Integer codigo) {
+		return repositorioExpediente.obtenerExpedientePorCodigo(codigo);
+	}
+
+	@Override
+	public List<Expediente> obtenerTodosLosExpedientes() {
+		return repositorioExpediente.obtenerTodosLosExpedientes();
+	}
+
 	protected Date dameFechaActual() {
 		return new Date();
 	}
@@ -87,4 +98,5 @@ public class ServicioExpedienteImpl implements ServicioExpediente {
 				expediente.getFechaArchivado(), expediente.getPublico(), expediente.getEstado(),
 				expediente.getFechaUltimaModificacion(), expediente.getDocumentos());
 	}
+
 }

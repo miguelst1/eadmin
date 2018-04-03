@@ -1,6 +1,7 @@
 package es.fpdual.eadmin.eadmin.servicios.impl;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,6 +42,16 @@ public class ServicioDocumentoImpl implements ServicioDocumento{
 		repositorioDocumento.eliminarDocumento(codigo);
 	}
 	
+	@Override
+	public Documento obtenerDocumentoPorCodigo(Integer codigo) {
+		return repositorioDocumento.obtenerDocumentoPorCodigo(codigo);
+	}
+
+	@Override
+	public List<Documento> obtenerTodosLosDocumentos() {
+		return repositorioDocumento.obtenerTodosLosDocumentos();
+	}
+	
 	protected Date dameFechaActual() {
 		return new Date();
 	}
@@ -54,4 +65,5 @@ public class ServicioDocumentoImpl implements ServicioDocumento{
 				documento.getNombre(), documento.getFechaCreacion(), documento.getPublico(),
 				documento.getEstado(), dameFechaActual());
 	}
+	
 }

@@ -1,13 +1,18 @@
 package es.fpdual.eadmin.eadmin.repositorio;
 
+import java.util.List;
+
 import es.fpdual.eadmin.eadmin.modelo.Documento;
 
 public interface RepositorioDocumento {
 	
-	public abstract void altaDocumento(Documento documento);
+	void altaDocumento(Documento documento);
 	
-	public abstract void modificarDocumento(Documento documento);
+	void modificarDocumento(Documento documento);
 	
-	public abstract void eliminarDocumento(Integer codigo);
+	void eliminarDocumento(Integer codigo);
 	
+	Documento obtenerDocumentoPorCodigo(Integer codigo);
+	
+	List<Documento> obtenerTodosLosDocumentos();
 }
