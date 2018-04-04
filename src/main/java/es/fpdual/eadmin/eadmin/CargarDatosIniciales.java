@@ -45,6 +45,7 @@ public class CargarDatosIniciales implements ApplicationRunner {
 				EstadoExpediente.EN_TRAMITE, new Date(2 / 1 / 2010), lista));
 		this.repositorioExpediente.altaExpediente(new Expediente(3, "expediente3", FECHA, FECHA, false,
 				EstadoExpediente.EN_TRAMITE, new Date(3 / 1 / 2010), lista));
+		this.repositorioDocumento.obtenerTodosLosDocumentos();
 	}
 
 }

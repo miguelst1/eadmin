@@ -12,19 +12,19 @@ import es.fpdual.eadmin.eadmin.repositorio.RepositorioDocumento;
 import es.fpdual.eadmin.eadmin.servicios.ServicioDocumento;
 
 @Service
-public class ServicioDocumentoImpl implements ServicioDocumento{
+public class ServicioDocumentoImpl implements ServicioDocumento {
 
 	private final RepositorioDocumento repositorioDocumento;
-	
+
 	@Autowired
-	public ServicioDocumentoImpl (RepositorioDocumento repositorioDocumento) {
+	public ServicioDocumentoImpl(RepositorioDocumento repositorioDocumento) {
 		this.repositorioDocumento = repositorioDocumento;
 	}
-	
+
 	@Override
 	public Documento altaDocumento(Documento documento) {
 		final Documento documentoAlta = obtenerDocumentoConFechaCorrectaAlta(documento);
-		
+
 		repositorioDocumento.altaDocumento(documentoAlta);
 		return documentoAlta;
 	}
@@ -32,7 +32,7 @@ public class ServicioDocumentoImpl implements ServicioDocumento{
 	@Override
 	public Documento modificarDocumento(Documento documento) {
 		final Documento documentoModificado = obtenerDocumentoConFechaCorrectaModificar(documento);
-		
+
 		repositorioDocumento.modificarDocumento(documentoModificado);
 		return documentoModificado;
 	}
@@ -41,7 +41,7 @@ public class ServicioDocumentoImpl implements ServicioDocumento{
 	public void eliminarDocumento(Integer codigo) {
 		repositorioDocumento.eliminarDocumento(codigo);
 	}
-	
+
 	@Override
 	public Documento obtenerDocumentoPorCodigo(Integer codigo) {
 		return repositorioDocumento.obtenerDocumentoPorCodigo(codigo);
@@ -51,19 +51,18 @@ public class ServicioDocumentoImpl implements ServicioDocumento{
 	public List<Documento> obtenerTodosLosDocumentos() {
 		return repositorioDocumento.obtenerTodosLosDocumentos();
 	}
-	
+
 	protected Date dameFechaActual() {
 		return new Date();
 	}
-	
-	public Documento obtenerDocumentoConFechaCorrectaAlta(Documento documento) {	
+
+	public Documento obtenerDocumentoConFechaCorrectaAlta(Documento documento) {
 		return new DocumentoBuilder().clonar(documento).conFechaCreacion(dameFechaActual()).construir();
 	}
-	
+
 	public Documento obtenerDocumentoConFechaCorrectaModificar(Documento documento) {
-		return new Documento(documento.getCodigo(),
-				documento.getNombre(), documento.getFechaCreacion(), documento.getPublico(),
-				documento.getEstado(), dameFechaActual());
+		return new Documento(documento.getCodigo(), documento.getNombre(), documento.getFechaCreacion(),
+				documento.getPublico(), documento.getEstado(), dameFechaActual());
 	}
-	
+
 }

@@ -4,6 +4,7 @@ import static org.junit.Assert.assertSame;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
@@ -44,5 +45,12 @@ public class EadminControladorTest {
 		List<Documento> listaControlador = eadminControlador.getTodosDocumentos().getBody();
 
 		assertSame(lista, listaControlador);
+	}
+
+	@Test
+	public void testEliminarDocumento() {
+		eadminControlador.eliminarDocumento(1);
+
+		verify(servicioDocumento).eliminarDocumento(1);
 	}
 }
