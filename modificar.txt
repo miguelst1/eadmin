@@ -1,0 +1,4 @@
+codigo: 2, nombre: documento2, fechaCreacion: Thu Apr 05 13:42:18 CEST 2018, publico: true, fechaUltimaModificacion: Thu Jan 01 01:00:00 CET 1970, estado: ACTIVO
+***********************************
+codigo: 4, nombre: documento4, fechaCreacion: Thu Apr 05 13:42:18 CEST 2018, publico: true, fechaUltimaModificacion: Thu Jan 01 01:00:00 CET 1970, estado: ELIMINADO
+***********************************
