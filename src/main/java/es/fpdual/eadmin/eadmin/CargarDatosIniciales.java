@@ -34,6 +34,12 @@ public class CargarDatosIniciales implements ApplicationRunner {
 			new Date(4 / 1 / 2010));
 	private static final Documento DOCUMENTO5 = new Documento(5, "documento5", FECHA, true, EstadoDocumento.ELIMINADO,
 			new Date(5 / 1 / 2010));
+	private static final Expediente EXPEDIENTE1 = new Expediente(1, "expediente1", FECHA, FECHA, false,
+			EstadoExpediente.EN_TRAMITE, new Date(1 / 1 / 2010), lista);
+	private static final Expediente EXPEDIENTE2 = new Expediente(2, "expediente2", FECHA, FECHA, false,
+			EstadoExpediente.EN_TRAMITE, new Date(2 / 1 / 2010), lista);
+	private static final Expediente EXPEDIENTE3 = new Expediente(3, "expediente3", FECHA, FECHA, false,
+			EstadoExpediente.EN_TRAMITE, new Date(3 / 1 / 2010), lista);
 
 	@Autowired
 	public CargarDatosIniciales(RepositorioDocumento repositorioDocumento,
@@ -49,12 +55,10 @@ public class CargarDatosIniciales implements ApplicationRunner {
 		this.repositorioDocumento.altaDocumento(DOCUMENTO3);
 		this.repositorioDocumento.altaDocumento(DOCUMENTO4);
 		this.repositorioDocumento.altaDocumento(DOCUMENTO5);
-		this.repositorioExpediente.altaExpediente(new Expediente(1, "expediente1", FECHA, FECHA, false,
-				EstadoExpediente.EN_TRAMITE, new Date(1 / 1 / 2010), lista));
-		this.repositorioExpediente.altaExpediente(new Expediente(2, "expediente2", FECHA, FECHA, false,
-				EstadoExpediente.EN_TRAMITE, new Date(2 / 1 / 2010), lista));
-		this.repositorioExpediente.altaExpediente(new Expediente(3, "expediente3", FECHA, FECHA, false,
-				EstadoExpediente.EN_TRAMITE, new Date(3 / 1 / 2010), lista));
+		this.repositorioExpediente.altaExpediente(EXPEDIENTE1);
+		this.repositorioExpediente.altaExpediente(EXPEDIENTE2);
+		this.repositorioExpediente.altaExpediente(EXPEDIENTE3);
+
 		this.repositorioDocumento.obtenerTodosLosDocumentos();
 		this.repositorioDocumento.IntroducirDocumentosEnFichero(repositorioDocumento.obtenerTodosLosDocumentos());
 		this.repositorioDocumento.modificarDocumento(DOCUMENTO2);
@@ -64,6 +68,15 @@ public class CargarDatosIniciales implements ApplicationRunner {
 		this.repositorioDocumento.eliminarDocumento(DOCUMENTO3.getCodigo());
 		this.repositorioDocumento.eliminarDocumento(DOCUMENTO5.getCodigo());
 		this.repositorioDocumento.IntroducirDocumentosEnFichero(repositorioDocumento.obtenerTodosLosDocumentos());
+
+		this.repositorioExpediente.obtenerTodosLosExpedientes();
+		this.repositorioExpediente.IntroducirExpedientesEnFichero(repositorioExpediente.obtenerTodosLosExpedientes());
+		this.repositorioExpediente.modificarExpediente(EXPEDIENTE1);
+		this.repositorioExpediente.modificarExpediente(EXPEDIENTE2);
+		this.repositorioExpediente.IntroducirExpedientesEnFichero(repositorioExpediente.obtenerTodosLosExpedientes());
+		this.repositorioExpediente.eliminarExpediente(EXPEDIENTE2.getCodigo());
+		this.repositorioExpediente.eliminarExpediente(EXPEDIENTE3.getCodigo());
+		this.repositorioExpediente.IntroducirExpedientesEnFichero(repositorioExpediente.obtenerTodosLosExpedientes());
 	}
 
 }
